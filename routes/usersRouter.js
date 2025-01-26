@@ -2,13 +2,10 @@ const { Router } = require("express");
 const usersController = require("../controllers/usersController");
 const usersRouter = Router();
 
-usersRouter.get("/", usersController.usersListGet);
-usersRouter.get("/create", usersController.usersCreateGet);
-usersRouter.post("/create", usersController.usersCreateGet);
+usersRouter.get("/", usersController.getUsernames);
+usersRouter.get("/createUser", usersController.createUsernameGet);
+usersRouter.post("/createUser", usersController.createUsernamePost);
 
-usersRouter.get("/:id/update", usersController.usersUpdateGet);
-usersRouter.post("/:id/update", usersController.usersUpdatePost);
-
-usersRouter.post("/:id/delete", usersController.usersDeletePost);
+usersRouter.get("/")
 
 module.exports = usersRouter;
