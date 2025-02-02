@@ -6,6 +6,6 @@ usersRouter.get("/", usersController.getUsernames);
 usersRouter.get("/createUser", usersController.createUsernameGet);
 usersRouter.post("/createUser", usersController.createUsernamePost);
 
-usersRouter.get("/")
+usersRouter.get("/", usersController.searchUsernames);
 
 module.exports = usersRouter;
