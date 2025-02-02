@@ -8,4 +8,6 @@ usersRouter.post("/createUser", usersController.createUsernamePost);
 
 usersRouter.get("/", usersController.searchUsernames);
 
+usersRouter.post("/delete", usersController.deleteUsername);
+
 module.exports = usersRouter;

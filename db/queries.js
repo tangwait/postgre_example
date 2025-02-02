@@ -1,10 +1,5 @@
 const pool = require("./pool");
 
-async function getAllUsers() {
-  const result = await pool.query("SELECT * FROM users");
-  return result.rows;
-}
-
 async function getAllUsernames() {
   const { rows } = await pool.query("SELECT * FROM usernames");
   return rows;
@@ -22,9 +17,18 @@ async function searchUsernames(searchQuery) {
     return rows;
 }
 
+async function deleteUsername(username) {
+  const { rowCount } = await pool.query(
+    "DELETE FROM usernames WHERE username = $1",
+    [username]
+  );
+
+  return rowCount ? `Deleted ${username}` : `User not found`;
+};
+
 module.exports = {
   searchUsernames,
-  getAllUsers,
   getAllUsernames,
-  insertUsername
+  insertUsername,
+  deleteUsername
 };

@@ -17,8 +17,13 @@
   </ul>
   <form action="/" method="GET">
     <label for="search">Search usernames</label>
-    <input type="text" name="search" id="search" placeholder="Enter name">
+    <input type="text" name="search" id="search" placeholder="Enter name to search">
     <button type="submit">Search!</button>
+  </form>
+  <form action="/delete" method="POST">
+    <label for="delete">Delete username</label>
+    <input type="text" name="username" id="delete" placeholder="Enter name to delete">
+    <button type="submit">Delete</button>
   </form>
   <a href="/">Homepage</a>
 </body>

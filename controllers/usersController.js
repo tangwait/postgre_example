@@ -29,9 +29,28 @@ async function searchUsernames(req, res) {
   res.render("index", { title: "Searched Users", users: usernames});
 }
 
+async function deleteUsername(req, res) {
+  try {
+    const usernameToDelete = req.body.username;
+
+    if (!usernameToDelete) {
+      return res.status(400).send("Not a valid username");
+    }
+
+    await db.deleteUsername(usernameToDelete);
+    const usernames = await db.getAllUsernames();
+
+    res.render("index", { title: "Updated Database", users: usernames});
+  } catch (error) {
+    console.error("Can't delete username", error);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
 module.exports = {
   getUsernames,
   createUsernameGet,
   createUsernamePost,
-  searchUsernames
+  searchUsernames,
+  deleteUsername
 };
